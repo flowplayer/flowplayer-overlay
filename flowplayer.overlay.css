@@ -24,4 +24,8 @@
   margin: 2em auto;
 }
 
+.flowplayer-overlay-mask .flowplayer.is-loading {
+  background-color: #000;
+}
+
 
