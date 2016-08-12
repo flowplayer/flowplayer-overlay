@@ -1,5 +1,4 @@
  /* global flowplayer */
-
 var common = flowplayer.common
   , bean = flowplayer.bean;
 
@@ -9,9 +8,16 @@ flowplayer(function(api, root) {
   common.addClass(root, 'is-overlaid');
   common.addClass(root, 'is-closeable');
 
-  var trigger = api.conf.overlay.trigger || api.conf.overlay;
+  var vendor = api.conf.overlay.vendor || 'native';
+  if (!flowplayer.overlay[vendor]) throw new Error('Overlay "' + vendor + '" not implemented');
+  flowplayer.overlay[vendor](api, root);
+});
 
-  var wrapper = document.createElement('div');
+
+flowplayer.overlay = {};
+flowplayer.overlay.native = function(api, root) {
+  var trigger = api.conf.overlay.trigger || api.conf.overlay
+    , wrapper = document.createElement('div');
   wrapper.className = 'flowplayer-overlay-mask';
   wrapper.appendChild(root);
 
@@ -38,4 +44,4 @@ flowplayer(function(api, root) {
     if (wrapper.parentNode) document.body.removeChild(wrapper);
     common.removeClass(root, 'is-open');
   }
-});
+};
