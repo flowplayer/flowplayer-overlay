@@ -5,7 +5,7 @@ var common = flowplayer.common
 
 flowplayer(function(api, root) {
   if (!api.conf.overlay) return;
-  api.conf.splash = true;
+  api.conf.splash = api.conf.autoplay = true;
   common.addClass(root, 'is-overlaid');
   common.addClass(root, 'is-closeable');
 
