@@ -1,3 +1,13 @@
+/*!
+
+   Overlay plugin for Flowplayer HTML5
+
+   Copyright (c) 2016, Flowplayer Oy
+
+   Released under the MIT License: https://opensource.org/licenses/MIT
+
+*/
+
 (function() {
   /* global flowplayer */
   var common = flowplayer.common
