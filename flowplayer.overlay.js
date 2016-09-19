@@ -37,9 +37,11 @@
         api.load();
       });
 
-      bean.on(document, 'keydown', function(ev) {
-        if (ev.keyCode === 27) api.unload();
-      });
+      if (api.conf.keyboard) {
+        bean.on(document, 'keydown', function(ev) {
+          if (ev.keyCode === 27) api.unload();
+        });
+      }
 
       api.on('unload', function() {
         hideOverlay();
