@@ -26,6 +26,12 @@
 
     modal.find('.modal-body').append(root);
 
+    if (conf.keyboard !== false) {
+      $(document).on('keydown', function(ev) {
+        if (ev.keyCode === 27) api.unload();
+      });
+    }
+
     modal.on('shown.bs.modal', function() {
       api.load(null, function() {
         if (!modalTitle) {
