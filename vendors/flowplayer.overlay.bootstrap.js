@@ -36,6 +36,7 @@
       api.load(null, function() {
         if (!modalTitle) {
           modal.find('.modal-title').text(api.video.title);
+          $('.fp-title', root).hide();
         }
       });
       common.addClass(root, 'is-open');
