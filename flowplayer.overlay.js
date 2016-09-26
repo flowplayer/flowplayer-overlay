@@ -32,10 +32,13 @@
       wrapper.className = 'flowplayer-overlay-mask';
       wrapper.appendChild(root);
 
-      bean.on(document, 'click', trigger, function() {
+      var triggerCallback = function() {
         showOverlay();
         api.load();
-      });
+      };
+
+      if (trigger.tagName) bean.on(trigger, 'click', triggerCallback);
+      else bean.on(document, 'click', trigger, triggerCallback);
 
       if (api.conf.keyboard) {
         bean.on(document, 'keydown', function(ev) {
