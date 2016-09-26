@@ -32,7 +32,8 @@
       wrapper.className = 'flowplayer-overlay-mask';
       wrapper.appendChild(root);
 
-      var triggerCallback = function() {
+      var triggerCallback = function(ev) {
+        ev.preventDefault();
         showOverlay();
         api.load();
       };
