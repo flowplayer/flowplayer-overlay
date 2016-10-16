@@ -1,9 +1,7 @@
 (function() {
   /* global flowplayer */
 
-  var bean = flowplayer.bean
-    , common = flowplayer.common
-    , $ = window.jQuery;
+  var $ = window.jQuery;
 
   flowplayer.overlay.bootstrap = function(api, root) {
     var conf = api.conf.overlay
@@ -39,19 +37,19 @@
           $('.fp-title', root).hide();
         }
       });
-      common.addClass(root, 'is-open');
+      $(root).addClass('is-open');
     });
 
     modal.on('hidden.bs.modal', function() {
       api.unload();
-      common.removeClass(root, 'is-open');
+      $(root).removeClass('is-open');
     });
 
     api.on('unload', function() {
       modal.modal('hide');
     });
 
-    bean.on(document, 'click', trigger, function() {
+    $(trigger).on('click', function() {
       modal.modal();
     });
 
