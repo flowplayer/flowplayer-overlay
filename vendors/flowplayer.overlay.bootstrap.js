@@ -31,21 +31,22 @@
     }
 
     modal.on('shown.bs.modal', function() {
-      api.load(null, function() {
-        if (!modalTitle) {
-          modal.find('.modal-title').text(api.video.title);
-          $('.fp-title', root).hide();
-        }
-      });
+      api.load();
       $(root).addClass('is-open');
-    });
-
-    modal.on('hidden.bs.modal', function() {
+    }).on('hidden.bs.modal', function() {
       api.unload();
       $(root).removeClass('is-open');
     });
 
-    api.on('unload', function() {
+    api.on('load ready', function(e, api, video) {
+      if (!modalTitle) {
+        if (/l/.test(e.type)) {
+          modal.find('.modal-title').text(video.title);
+        } else {
+          $('.fp-title', root).hide();
+        }
+      }
+    }).on('unload', function() {
       modal.modal('hide');
     });
 
