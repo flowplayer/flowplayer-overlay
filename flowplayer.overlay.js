@@ -2,7 +2,7 @@
 
    Overlay plugin for Flowplayer HTML5
 
-   Copyright (c) 2016, Flowplayer Oy
+   Copyright (c) 2016-17, Flowplayer Drive Oy
 
    Released under the MIT License: https://opensource.org/licenses/MIT
 

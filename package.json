@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "min": "uglifyjs --compress --mangle --comments '/Flowplayer Oy/' -o flowplayer.overlay.min.js -- flowplayer.overlay.js"
+    "min": "uglifyjs -m -c --comments '/Flowplayer Drive Oy/' -o flowplayer.overlay.min.js flowplayer.overlay.js"
   },
   "repository": {
     "type": "git",
