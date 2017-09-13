@@ -28,9 +28,7 @@
     flowplayer.overlay = {};
     flowplayer.overlay.native = function(api, root) {
       var trigger = api.conf.overlay.trigger || api.conf.overlay
-        , wrapper = document.createElement('div');
-      wrapper.className = 'flowplayer-overlay-mask';
-      wrapper.appendChild(root);
+        , wrapper = common.append(common.createElement('div', {'class': 'flowplayer-overlay-mask'}), root);
 
       var triggerCallback = function(ev) {
         ev.preventDefault();
@@ -58,7 +56,7 @@
       }
 
       function hideOverlay() {
-        if (wrapper.parentNode) document.body.removeChild(wrapper);
+        common.removeNode(wrapper);
         common.removeClass(root, 'is-open');
       }
     };
