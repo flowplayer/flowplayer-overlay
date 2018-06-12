@@ -10,8 +10,10 @@
 
 (function() {
   var extension = function(flowplayer) {
+    var common, bean;
     flowplayer(function(api, root) {
-      var common = flowplayer.common;
+      common = flowplayer.common || window.flowplayer.common;
+      bean = flowplayer.bean || window.flowplayer.bean;
 
       if (!api.conf.overlay) return;
       api.conf.splash = api.conf.autoplay = true;
@@ -27,9 +29,7 @@
     flowplayer.overlay = {};
     flowplayer.overlay.native = function(api, root) {
       
-      var bean = flowplayer.bean
-        , common = flowplayer.common
-        , trigger = api.conf.overlay.trigger || api.conf.overlay
+      var trigger = api.conf.overlay.trigger || api.conf.overlay
         , wrapper = common.append(common.createElement('div', {'class': 'flowplayer-overlay-mask'}), root);
 
       var triggerCallback = function(ev) {
