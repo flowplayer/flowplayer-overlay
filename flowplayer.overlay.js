@@ -17,6 +17,9 @@
 
       if (!api.conf.overlay) return;
       api.conf.splash = api.conf.autoplay = true;
+      api.conf.hlsjs = api.conf.hlsjs || {};
+      api.conf.hlsjs.recoverMediaError = false;
+      api.conf.hlsjs.recoverNetworkError = false;
       common.addClass(root, 'is-overlaid');
       common.addClass(root, 'is-closeable');
 
@@ -49,6 +52,10 @@
 
       api.on('unload', function() {
         hideOverlay();
+        api.one('error', function() {
+          api.error = api.loading = false;
+          common.removeNode(root.querySelector('.fp-message'));
+        });
       });
 
 
